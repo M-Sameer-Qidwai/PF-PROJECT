@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 
-// Define the structure for a student
+#define MAX 100
+
+// Structure for student data
 struct Student {
     int roll;
     char name[50];
@@ -8,28 +11,50 @@ struct Student {
     float marks;
 };
 
-int main() {
+// Array to hold multiple students
+struct Student students[MAX];
+int count = 0;
+
+// Function to add a new student
+void addStudent() {
+    if (count >= MAX) {
+        printf("Student limit reached!\n");
+        return;
+    }
+
     struct Student s;
 
-    // Taking input from the user
-    printf("Enter Student Roll Number: ");
+    printf("Enter Roll Number: ");
     scanf("%d", &s.roll);
 
-    printf("Enter Student Name: ");
-    getchar(); // Clear newline from buffer
+    printf("Enter Name: ");
+    getchar(); // Clear buffer
     fgets(s.name, sizeof(s.name), stdin);
+    s.name[strcspn(s.name, "\n")] = '\0'; // Remove newline
 
-    printf("Enter Program (e.g., BSc, BBA): ");
+    printf("Enter Program: ");
     scanf("%s", s.program);
 
     printf("Enter Marks: ");
     scanf("%f", &s.marks);
 
-    // Displaying the entered student data
-    printf("\n--- Student Details ---\n");
-    printf("Roll Number: %d\n", s.roll);
-    printf("Name: %s", s.name);  // already includes newline from fgets
-    printf("Program: %s\n", s.program);
-    printf("Marks: %.2f\n", s.marks);
-return 0;
+    students[count++] = s;
+    printf("Student added successfully!\n");
+}
+
+// Function to display all students
+void displayStudents() {
+    if (count == 0) {
+        printf("No student records found.\n");
+        return;
+    }
+
+    printf("\n--- Student List ---\n");
+    for (int i = 0; i < count; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Roll Number: %d\n", students[i].roll);
+        printf("Name: %s\n", students[i].name);
+        printf("Program: %s\n", students[i].program);
+        printf("Marks: %.2f\n", students[i].marks);
+    }
 }
