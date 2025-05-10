@@ -81,7 +81,7 @@ int main() {
                 printf("Exiting program. Goodbye!\n");
                 break;
             default:
-                printf("Invalid choice. Try again.\n");
+                printf("Invalid choice!. Try again.\n");
         }
 
     } while (choice != 3);
