@@ -39,7 +39,7 @@ void addStudent() {
     scanf("%f", &s.marks);
 
     students[count++] = s;
-    printf("Student added successfully!\n");
+    printf("Student added successfully!\n"); 
 }
 
 // Function to display all students
@@ -57,4 +57,34 @@ void displayStudents() {
         printf("Program: %s\n", students[i].program);
         printf("Marks: %.2f\n", students[i].marks);
     }
+}
+// Main menu loop
+int main() {
+    int choice;
+
+    do {
+        printf("\n--- College Admission System Menu ---\n");
+        printf("1. Add Student\n");
+        printf("2. Display All Students\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addStudent();
+                break;
+            case 2:
+                displayStudents();
+                break;
+            case 3:
+                printf("Exiting program. Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+
+    } while (choice != 3);
+
+    return 0;
 }
