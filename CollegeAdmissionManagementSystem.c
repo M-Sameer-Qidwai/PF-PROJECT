@@ -96,7 +96,7 @@ void deleteStudent()
     {
         if (students[i].roll == roll)
         {
-            for (int j = i; j < count - 1; j++)
+            for (int j = i; j < count; j++)
             {
                 students[j] = students[j + 1];
             }
