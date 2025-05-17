@@ -203,7 +203,7 @@ int main()
 
     do
     {
-        printf("\n--- College Admission System Menu ---\n");
+        printf("\n---- College Admission Management System Menu ----\n");
         printf("1. Add Student\n");
         printf("2. Display All Students\n");
         printf("3. Search Student\n");
