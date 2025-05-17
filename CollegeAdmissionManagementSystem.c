@@ -240,7 +240,7 @@ int main()
         default:
             printf("Invalid choice. Try again.\n");
         }
-    } while (choice != 6);
+    } while (choice != 8);
 
     return 0;
 }
