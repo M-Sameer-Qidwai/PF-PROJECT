@@ -51,19 +51,7 @@ void displayStudents()
         printf("No student records found.\n");
         return;
     }
-    // Simple Bubble Sort by roll number
-    for (int i = 0; i < count - 1; i++)
-    {
-        for (int j = 0; j < count - i - 1; j++)
-        {
-            if (students[j].roll > students[j + 1].roll)
-            {
-                struct Stvudent temp = students[j];
-                students[j] = students[j + 1];
-                students[j + 1] = temp;
-            }
-        }
-    }
+    
     printf("\n--- Student List ---\n");
     for (int i = 0; i < count; i++)
     {
