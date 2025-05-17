@@ -51,7 +51,19 @@ void displayStudents()
         printf("No student records found.\n");
         return;
     }
-
+    // Simple Bubble Sort by roll number
+    for (int i = 0; i < count - 1; i++)
+    {
+        for (int j = 0; j < count - i - 1; j++)
+        {
+            if (students[j].roll > students[j + 1].roll)
+            {
+                struct Stvudent temp = students[j];
+                students[j] = students[j + 1];
+                students[j + 1] = temp;
+            }
+        }
+    }
     printf("\n--- Student List ---\n");
     for (int i = 0; i < count; i++)
     {
@@ -172,15 +184,18 @@ void showSummary()
     printf("Average Marks: %.2f\n", totalMarks / count);
 }
 
-void exportToTextFile() {
+void exportToTextFile()
+{
     FILE *fp = fopen("students.txt", "w");
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         printf("Unable to create text file.\n");
         return;
     }
 
     fprintf(fp, "--- Student List ---\n");
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         fprintf(fp, "Roll No: %d\n", students[i].roll);
         fprintf(fp, "Name: %s\n", students[i].name);
         fprintf(fp, "Program: %s\n", students[i].program);
@@ -232,7 +247,7 @@ int main()
             showSummary();
             break;
         case 7:
-            exportToTextFile(); 
+            exportToTextFile();
             break;
         case 8:
             printf("Saving data and exiting...\n");
