@@ -172,6 +172,25 @@ void showSummary()
     printf("Average Marks: %.2f\n", totalMarks / count);
 }
 
+void exportToTextFile() {
+    FILE *fp = fopen("students.txt", "w");
+    if (fp == NULL) {
+        printf("Unable to create text file.\n");
+        return;
+    }
+
+    fprintf(fp, "--- Student List ---\n");
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "Roll No: %d\n", students[i].roll);
+        fprintf(fp, "Name: %s\n", students[i].name);
+        fprintf(fp, "Program: %s\n", students[i].program);
+        fprintf(fp, "Marks: %.2f\n\n", students[i].marks);
+    }
+
+    fclose(fp);
+    printf("Student data exported to students.txt successfully.\n");
+}
+
 // Main Menu
 int main()
 {
@@ -188,7 +207,8 @@ int main()
         printf("4. Delete Student\n");
         printf("5. Save to File\n");
         printf("6. Show Summary\n");
-        printf("7. Exit\n");
+        printf("7. Export Data to Text File\n");
+        printf("8. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
@@ -212,6 +232,9 @@ int main()
             showSummary();
             break;
         case 7:
+            exportToTextFile(); 
+            break;
+        case 8:
             printf("Saving data and exiting...\n");
             break;
         default:
